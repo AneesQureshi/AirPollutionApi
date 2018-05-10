@@ -18,3 +18,4 @@ D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\bin\System.Web.Http
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.csproj.CoreCompileInputs.cache
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.dll
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.pdb
+D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.csprojResolveAssemblyReference.cache

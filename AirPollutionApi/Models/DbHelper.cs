@@ -245,10 +245,6 @@ namespace AirPollutionApi.Models
         {
 
 
-           
-
-
-
             List<PollutantModel> pollutantHistoryList = new List<PollutantModel>();
             try
             {
