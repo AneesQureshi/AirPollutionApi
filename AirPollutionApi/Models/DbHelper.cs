@@ -195,10 +195,10 @@ namespace AirPollutionApi.Models
 
                 for (int i = 0; i < stationResult.Tables[0].Rows.Count; i++)
                 {
-                    string aqi = stationResult.Tables[0].Rows[i].ItemArray[0].ToString();
-                    string station = stationResult.Tables[0].Rows[i].ItemArray[1].ToString();
-                    string created_date = stationResult.Tables[0].Rows[i].ItemArray[2].ToString();
-                    sm.aqi = aqi;
+                   // string aqi = stationResult.Tables[0].Rows[i].ItemArray[0].ToString();
+                    string station = stationResult.Tables[0].Rows[i].ItemArray[0].ToString();
+                    string created_date = stationResult.Tables[0].Rows[i].ItemArray[1].ToString();
+                    //sm.aqi = aqi;
                     sm.stationName = station;
                     sm.lastUpdatedDate = created_date;
                 }
