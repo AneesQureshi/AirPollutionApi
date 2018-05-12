@@ -64,6 +64,7 @@ namespace AirPollutionApi.Models
         {
 
             List<StationModel> stationNames = new List<StationModel>();
+            List<StationModel> stationNamesInCity = new List<StationModel>();
             List<LocationModel> cityNames = new List<LocationModel>();
             SearchModel objSearchList = new SearchModel();
            
@@ -84,6 +85,11 @@ namespace AirPollutionApi.Models
                     StationModel station = new StationModel();
                     station.stationId = sdr["id"].ToString();
                     station.stationName = sdr["station"].ToString();
+                    station.aqi = sdr["aqi"].ToString();
+                    station.latitude = sdr["latitude"].ToString();
+                    station.longitude = sdr["longitude"].ToString();
+                    station.lastUpdatedDate = sdr["updated_date"].ToString();
+                   
                     stationNames.Add(station);
 
                 }
@@ -104,11 +110,15 @@ namespace AirPollutionApi.Models
                     city.city = sdr1["city"].ToString();
                     city.state = sdr1["state"].ToString();
                     city.country = sdr1["country"].ToString();
-                    cityNames.Add(city);
 
+                    stationNamesInCity= StationInCity(city.cityId);
+                    cityNames.Add(city);
+                 
                 }
 
                 sdr1.Close();
+
+
                 objSearchList.stationList = stationNames;
                 objSearchList.cityList = cityNames;
                
@@ -133,6 +143,7 @@ namespace AirPollutionApi.Models
             List<StationModel> StationInCityList = new List<StationModel>();
             try
             {
+                
                 con = db.OpenConnection();
                 cmd = new MySqlCommand("sp_stationInCity", con);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -150,6 +161,8 @@ namespace AirPollutionApi.Models
                     StationInCityList.Add(latlongstations);
 
                 }
+
+                sdr.Close();
             }
             catch (Exception ex)
             {
