@@ -15,7 +15,7 @@ namespace AirPollutionApi.Models
         MySqlConnection con;
         MySqlCommand cmd;
 
-        //from the users location lat, long, radius this api will give the stations within that radius range.
+        ////from the users location lat, long, radius this api will give the stations within that radius range.
         public List<StationModel> HomePage(string latitude, string longitude, string radius)
         {
 
