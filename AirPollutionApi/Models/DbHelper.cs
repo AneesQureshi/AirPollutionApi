@@ -67,58 +67,49 @@ namespace AirPollutionApi.Models
             
             List<LocationModel> cityNames = new List<LocationModel>();
             SearchModel objSearchList = new SearchModel();
-           
+            DataSet searchResult = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter();
 
             try
             {
-
-
                 con = db.OpenConnection();
-                cmd = new MySqlCommand("sp_locationStation", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-
+                cmd = new MySqlCommand("sp_searchList", con);
                 cmd.Parameters.AddWithValue("val_loc", loc);
-                MySqlDataReader sdr = cmd.ExecuteReader();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                da.SelectCommand = cmd;
+                da.Fill(searchResult);
 
-                while (sdr.Read())
+
+
+
+                for (int i = 0; i < searchResult.Tables[0].Rows.Count; i++)
                 {
+
                     StationModel station = new StationModel();
-                    station.stationId = sdr["id"].ToString();
-                    station.stationName = sdr["station"].ToString();
-                    station.aqi = sdr["aqi"].ToString();
-                    station.latitude = sdr["latitude"].ToString();
-                    station.longitude = sdr["longitude"].ToString();
-                    station.lastUpdatedDate = sdr["updated_date"].ToString();
-                   
+                    station.stationId=searchResult.Tables[0].Rows[i].ItemArray[0].ToString();
+                    station.stationName = searchResult.Tables[0].Rows[i].ItemArray[1].ToString();
+                    station.aqi = searchResult.Tables[0].Rows[i].ItemArray[2].ToString();
+                    station.latitude = searchResult.Tables[0].Rows[i].ItemArray[3].ToString();
+                    station.longitude = searchResult.Tables[0].Rows[i].ItemArray[4].ToString();
+                    station.lastUpdatedDate = searchResult.Tables[0].Rows[i].ItemArray[8].ToString();
+
                     stationNames.Add(station);
 
+
                 }
 
-                sdr.Close();
-
-             
-                cmd = new MySqlCommand("sp_locationCity", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("val_loc", loc);
-                MySqlDataReader sdr1 = cmd.ExecuteReader();
-
-                while (sdr1.Read())
+                for (int i = 0; i < searchResult.Tables[1].Rows.Count; i++)
                 {
                     LocationModel city = new LocationModel();
-                    city.cityId = sdr1["id"].ToString();
-                    city.city = sdr1["city"].ToString();
-                    city.state = sdr1["state"].ToString();
-                    city.country = sdr1["country"].ToString();
-
-                    
+                    city.cityId = searchResult.Tables[1].Rows[i].ItemArray[0].ToString();
+                    city.city = searchResult.Tables[1].Rows[i].ItemArray[1].ToString();
+                    city.state = searchResult.Tables[1].Rows[i].ItemArray[2].ToString();
+                    city.country = searchResult.Tables[1].Rows[i].ItemArray[3].ToString();
                     cityNames.Add(city);
-                 
+
                 }
-
-                sdr1.Close();
-
-
+                
                 objSearchList.stationList = stationNames;
                 objSearchList.cityList = cityNames;
                
