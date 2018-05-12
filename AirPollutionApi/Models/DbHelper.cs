@@ -64,7 +64,7 @@ namespace AirPollutionApi.Models
         {
 
             List<StationModel> stationNames = new List<StationModel>();
-            List<StationModel> stationNamesInCity = new List<StationModel>();
+            
             List<LocationModel> cityNames = new List<LocationModel>();
             SearchModel objSearchList = new SearchModel();
            
@@ -111,7 +111,7 @@ namespace AirPollutionApi.Models
                     city.state = sdr1["state"].ToString();
                     city.country = sdr1["country"].ToString();
 
-                    stationNamesInCity= StationInCity(city.cityId);
+                    
                     cityNames.Add(city);
                  
                 }
