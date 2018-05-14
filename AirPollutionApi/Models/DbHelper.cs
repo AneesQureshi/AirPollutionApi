@@ -170,7 +170,7 @@ namespace AirPollutionApi.Models
         //we get the station id and give back the 
         //aqi value of that station, station name
         //pollutant names ,pollutant values for current time
-        //date, aqi max value for last 7 days
+        //date, aqi max value for last 7days
         public StationHomePageModel stationHomePage(string Id)
         {
             int StationId = Int16.Parse(Id);
