@@ -14,7 +14,7 @@ namespace AirPollutionApi.Models
         MySqlConnection con;
         public DbConnect()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["StagingConnection"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringStaging"].ConnectionString;
             con = new MySqlConnection(connectionString);
         }
 
