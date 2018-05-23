@@ -36,5 +36,28 @@ namespace AirPollutionApi.Controllers
             }
             return Ok(StationHomePage);
         }
+
+        //this api returns the two most polluted station with their city name in particular country and 
+        //two most healthy station with their city name  of that country.
+        [Route("api/HighestLowestStationAqi/{countryName}")]
+        [HttpGet]
+        public IHttpActionResult HighestLowestStationAqi(string countryName)
+        {
+
+
+            HigestLowestAqi HighLowAqi = new HigestLowestAqi();
+            StationModel sm = new StationModel();
+
+
+            try
+            {
+                HighLowAqi = sm.HighestLowestStationAqi(countryName);
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
+            return Ok(HighLowAqi);
+        }
     }
 }

@@ -98,6 +98,7 @@
     <Compile Include="Models\AqiHistoryModel.cs" />
     <Compile Include="Models\DbConnect.cs" />
     <Compile Include="Models\DbHelper.cs" />
+    <Compile Include="Models\HigestLowestAqi.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\PollutantModel.cs" />
     <Compile Include="Models\SearchModel.cs" />

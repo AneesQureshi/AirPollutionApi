@@ -279,5 +279,107 @@ namespace AirPollutionApi.Models
         }
 
 
+
+        //this api returns the two most polluted station with their city name in particular country and 
+        //two most healthy station with their city name  of that country.
+        public HigestLowestAqi HighestLowestStationAqi(string countryName)
+        {
+
+            
+
+            DataSet stationResult = new DataSet();
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+           
+          
+
+
+            HigestLowestAqi HighLowAqi = new HigestLowestAqi();
+            List<StationModel> HighStationList = new List<StationModel>();
+            List<StationModel> LowStationList = new List<StationModel>();
+            try
+            {
+
+                con = db.OpenConnection();
+                cmd = new MySqlCommand("sp_HighestLowestStationAqi", con);
+                cmd.Parameters.AddWithValue("val_countryName", countryName);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                da.SelectCommand = cmd;
+                da.Fill(stationResult);
+
+
+
+                if (stationResult.Tables.Count > 0)
+                {
+                    HighLowAqi.MessageHigh = "Most polluted cities found";
+
+                    for (int i = 0; i < stationResult.Tables[0].Rows.Count; i++)
+                    {
+
+                        StationModel smHigh = new StationModel();
+                      
+                        smHigh.stationId = stationResult.Tables[0].Rows[i].ItemArray[0].ToString();
+                        smHigh.stationName = stationResult.Tables[0].Rows[i].ItemArray[1].ToString();
+                        smHigh.aqi = stationResult.Tables[0].Rows[i].ItemArray[2].ToString();
+                        smHigh.latitude = stationResult.Tables[0].Rows[i].ItemArray[3].ToString();
+                        smHigh.longitude = stationResult.Tables[0].Rows[i].ItemArray[4].ToString();
+                        smHigh.lastUpdatedDate = stationResult.Tables[0].Rows[i].ItemArray[5].ToString();
+                        smHigh.city = stationResult.Tables[0].Rows[i].ItemArray[6].ToString();
+                        smHigh.state = stationResult.Tables[0].Rows[i].ItemArray[7].ToString();
+                        smHigh.country = stationResult.Tables[0].Rows[i].ItemArray[8].ToString();
+
+                        HighStationList.Add(smHigh);
+                      
+
+                    }
+                }
+                else
+                {
+                    HighLowAqi.MessageHigh = "Most polluted cities Not found";
+                }
+
+                if (stationResult.Tables.Count > 0)
+                {
+                    HighLowAqi.MessageLow = "Most Healthy city found";
+
+                    for (int i = 0; i < stationResult.Tables[1].Rows.Count; i++)
+                    {
+                        StationModel smLow = new StationModel();
+                        smLow.stationId = stationResult.Tables[1].Rows[i].ItemArray[0].ToString();
+                        smLow.stationName = stationResult.Tables[1].Rows[i].ItemArray[1].ToString();
+                        smLow.aqi = stationResult.Tables[1].Rows[i].ItemArray[2].ToString();
+                        smLow.latitude = stationResult.Tables[1].Rows[i].ItemArray[3].ToString();
+                        smLow.longitude = stationResult.Tables[1].Rows[i].ItemArray[4].ToString();
+                        smLow.lastUpdatedDate = stationResult.Tables[1].Rows[i].ItemArray[5].ToString();
+                        smLow.city = stationResult.Tables[1].Rows[i].ItemArray[6].ToString();
+                        smLow.state = stationResult.Tables[1].Rows[i].ItemArray[7].ToString();
+                        smLow.country = stationResult.Tables[1].Rows[i].ItemArray[8].ToString();
+                        LowStationList.Add(smLow);
+                      
+
+                    }
+
+                }
+                else
+                {
+                    HighLowAqi.MessageLow = "Most Healthy city not found";
+                }
+
+                HighLowAqi.TwoMostHealthyCities = LowStationList;
+                HighLowAqi.TwoMostPollutedCities = HighStationList;
+               
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+            return HighLowAqi;
+        }
+
     }
 }
