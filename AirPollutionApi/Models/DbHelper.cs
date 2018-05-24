@@ -199,10 +199,16 @@ namespace AirPollutionApi.Models
 
                 for (int i = 0; i < stationResult.Tables[0].Rows.Count; i++)
                 {
-                    sm.aqi = stationResult.Tables[0].Rows[i].ItemArray[0].ToString();
+                    sm.stationId= stationResult.Tables[0].Rows[i].ItemArray[0].ToString();
                     sm.stationName = stationResult.Tables[0].Rows[i].ItemArray[1].ToString();
-                    sm.lastUpdatedDate = stationResult.Tables[0].Rows[i].ItemArray[2].ToString();
-                    
+                    sm.aqi = stationResult.Tables[0].Rows[i].ItemArray[2].ToString();
+                    sm.latitude = stationResult.Tables[0].Rows[i].ItemArray[3].ToString();
+                    sm.longitude = stationResult.Tables[0].Rows[i].ItemArray[4].ToString();
+                    sm.lastUpdatedDate = stationResult.Tables[0].Rows[i].ItemArray[5].ToString();
+                    sm.city = stationResult.Tables[0].Rows[i].ItemArray[6].ToString();
+                    sm.state = stationResult.Tables[0].Rows[i].ItemArray[7].ToString();
+                    sm.country = stationResult.Tables[0].Rows[i].ItemArray[8].ToString();
+
                 }
 
                 for (int i = 0; i < stationResult.Tables[1].Rows.Count; i++)
