@@ -316,7 +316,7 @@ namespace AirPollutionApi.Models
 
 
 
-                if (stationResult.Tables.Count > 0)
+                if (stationResult.Tables[0].Rows.Count > 0)
                 {
                     HighLowAqi.MessageHigh = "Most polluted cities found";
 
@@ -345,7 +345,7 @@ namespace AirPollutionApi.Models
                     HighLowAqi.MessageHigh = "Most polluted cities Not found";
                 }
 
-                if (stationResult.Tables.Count > 0)
+                if (stationResult.Tables[1].Rows.Count > 0)
                 {
                     HighLowAqi.MessageLow = "Most Healthy city found";
 
