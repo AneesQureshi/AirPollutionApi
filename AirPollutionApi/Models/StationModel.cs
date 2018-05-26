@@ -13,6 +13,10 @@ namespace AirPollutionApi.Models
         public string latitude { get; set; }
         public string longitude { get; set; }
         public string lastUpdatedDate { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string country { get; set; }
+
 
 
         //from the users location lat, long, radius this api will give the stations within that radius range.
@@ -58,6 +62,26 @@ namespace AirPollutionApi.Models
                 string msg = ex.Message;
             }
             return StationHomePage;
+
+        }
+        //this api returns the two most polluted station with their city name in particular country and 
+        //two most healthy station with their city name  of that country.
+        public HigestLowestAqi HighestLowestStationAqi(string countryName)
+        {
+
+            HigestLowestAqi HighLowAqi = new HigestLowestAqi();
+
+            try
+            {
+
+                DbHelper db = new DbHelper();
+                HighLowAqi = db.HighestLowestStationAqi(countryName);
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
+            return HighLowAqi;
 
         }
 

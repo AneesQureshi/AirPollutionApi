@@ -21,7 +21,16 @@ namespace AirPollutionApi.Models
             try
             {
 
+
                 DbHelper db = new DbHelper();
+
+                // convert PM215 to PM2.5 as browser does not support passing pm2.5 as a parameter 
+
+                if (pollutantName =="PM215")
+                {
+                    pollutantName = "PM2.5";
+                }
+
                 pollutantHistoryList = db.PollutantHistory(stationId, pollutantName);
             }
             catch (Exception ex)
