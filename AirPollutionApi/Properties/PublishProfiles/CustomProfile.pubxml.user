@@ -10,10 +10,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AirPollutionApi.dll">
-      <publishTime>05/04/2018 15:28:19</publishTime>
+      <publishTime>06/25/2018 16:05:08</publishTime>
     </File>
     <File Include="bin/AirPollutionApi.pdb">
-      <publishTime>05/04/2018 15:28:19</publishTime>
+      <publishTime>06/25/2018 16:05:08</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>08/15/2017 13:12:32</publishTime>
@@ -184,7 +184,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2018 14:27:12</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/30/2018 16:37:50</publishTime>
+      <publishTime>06/25/2018 16:05:10</publishTime>
     </File>
   </ItemGroup>
 </Project>

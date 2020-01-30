@@ -15,7 +15,7 @@ D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\bin\Newtonsoft.Json
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\bin\System.Net.Http.Formatting.xml
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\bin\System.Web.Http.xml
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\bin\System.Web.Http.WebHost.xml
+D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.csprojResolveAssemblyReference.cache
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.csproj.CoreCompileInputs.cache
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.dll
 D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.pdb
-D:\Anees_Office\AirPollution\AirPollutionApi\AirPollutionApi\obj\Debug\AirPollutionApi.csprojResolveAssemblyReference.cache
